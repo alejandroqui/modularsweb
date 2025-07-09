@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaFacebookF, FaWhatsapp, FaInstagram, FaPhoneAlt, FaEnvelope } from 'react-icons/fa';
-import logo from '../us/Logo_positivo.png'; // Ajusta la ruta si es necesario
+import logo from '../us/Logo_Positivo.png'; // Ajusta la ruta si es necesario
 
 function Footer() {
   return (
