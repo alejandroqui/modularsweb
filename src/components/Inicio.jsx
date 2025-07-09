@@ -6,7 +6,7 @@ function Inicio() {
         <img
           src="/Banner.jpg"
           alt="Banner"
-          className="w-full h-[300px] object-cover"
+          className="w-full h-[180px] md:h-[300px] object-cover object-right md:object-center"
         />
       </div>
 

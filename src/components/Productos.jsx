@@ -28,9 +28,7 @@ export default function Productos() {
     images,
   }));
 
-  const mostrarMas = () => {
-    setVisibleCount((prev) => prev + 6);
-  };
+  const mostrarMas = () => setVisibleCount((prev) => prev + 6);
 
   const openModal = (images) => {
     setSelectedImages(images);
@@ -45,6 +43,7 @@ export default function Productos() {
 
   const nextImage = () =>
     setCurrentIndex((prev) => (prev + 1) % selectedImages.length);
+
   const prevImage = () =>
     setCurrentIndex((prev) =>
       (prev - 1 + selectedImages.length) % selectedImages.length
@@ -61,15 +60,15 @@ export default function Productos() {
           {productosArray.slice(0, visibleCount).map(({ ref, images }) => (
             <div
               key={ref}
-              className="cursor-pointer border border-gray-200 rounded-xl shadow-lg hover:shadow-2xl transition"
+              className="bg-white shadow-xl rounded-2xl overflow-hidden text-center min-h-[420px] flex flex-col cursor-pointer hover:scale-105 transition-transform duration-300"
               onClick={() => openModal(images)}
             >
               <img
                 src={images[0]}
                 alt={`Producto ${ref}`}
-                className="w-full h-80 object-cover rounded-t-xl"
+                className="w-full h-[360px] object-cover"
               />
-              <div className="bg-[#2d5d25] text-white p-4 rounded-b-xl text-center text-lg font-semibold">
+              <div className="bg-[#2d5d25] text-white p-3 text-base font-medium">
                 {ref}
               </div>
             </div>
@@ -110,7 +109,7 @@ export default function Productos() {
                 onClick={prevImage}
                 className="bg-[#2d5d25] text-white px-5 py-2 rounded hover:bg-[#244b1f]"
               >
-                ◀ Anterior
+                Anterior
               </button>
               <span className="text-gray-700 text-lg font-medium">
                 {currentIndex + 1} / {selectedImages.length}
@@ -119,7 +118,7 @@ export default function Productos() {
                 onClick={nextImage}
                 className="bg-[#2d5d25] text-white px-5 py-2 rounded hover:bg-[#244b1f]"
               >
-                Siguiente ▶
+                Siguiente
               </button>
             </div>
           </div>
@@ -128,3 +127,4 @@ export default function Productos() {
     </section>
   );
 }
+
