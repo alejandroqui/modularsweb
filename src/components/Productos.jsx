@@ -5,8 +5,9 @@ export default function Productos() {
   const [selectedImages, setSelectedImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(6);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('todos');
 
-  const rawImages = import.meta.glob('../imgs/*/*.jpg', {
+  const rawImages = import.meta.glob('../imgs/*/*/*.jpg', {
     eager: true,
     import: 'default',
   });
@@ -14,19 +15,26 @@ export default function Productos() {
   const productos = {};
 
   Object.entries(rawImages).forEach(([path, img]) => {
-    const match = path.match(/..\/imgs\/([^/]+)\/(\d+)\.jpg$/);
+    const match = path.match(/..\/imgs\/([^/]+)\/([^/]+)\/(\d+)\.jpg$/);
     if (match) {
-      const ref = match[1];
-      const index = parseInt(match[2], 10);
-      if (!productos[ref]) productos[ref] = [];
-      productos[ref][index - 1] = img;
+      const categoria = match[1];       // baño, cocina, etc.
+      const ref = match[2];             // lavamanos, espejo, etc.
+      const index = parseInt(match[3], 10);
+      const key = `${categoria}/${ref}`; // clave única
+
+      if (!productos[key]) productos[key] = { categoria, ref, images: [] };
+      productos[key].images[index - 1] = img;
     }
   });
 
-  const productosArray = Object.entries(productos).map(([ref, images]) => ({
-    ref,
-    images,
-  }));
+  const categorias = ['todos', ...new Set(Object.values(productos).map(p => p.categoria))];
+
+  const productosArray = Object.values(productos);
+
+  const productosFiltrados =
+    categoriaSeleccionada === 'todos'
+      ? productosArray
+      : productosArray.filter((p) => p.categoria === categoriaSeleccionada);
 
   const mostrarMas = () => setVisibleCount((prev) => prev + 6);
 
@@ -52,12 +60,33 @@ export default function Productos() {
   return (
     <section id="productos" className="bg-[#fdf6ec] py-16 px-4 sm:px-8">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-[#2d5d25] mb-12 text-center">
+        <h2 className="text-4xl font-bold text-[#2d5d25] mb-6 text-center">
           Nuestros Productos
         </h2>
 
+        {/* Botones de categoría */}
+        <div className="flex flex-wrap justify-center gap-4 mb-10">
+          {categorias.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => {
+                setCategoriaSeleccionada(cat);
+                setVisibleCount(6);
+              }}
+              className={`px-5 py-2 rounded-full text-[#2d5d25] font-medium border border-[#2d5d25] transition ${
+                categoriaSeleccionada === cat
+                  ? 'bg-[#2d5d25] text-white'
+                  : 'bg-[#fff8e8] hover:bg-[#f3e7d0]'
+              }`}
+            >
+              {cat.toUpperCase()}
+            </button>
+          ))}
+        </div>
+
+        {/* Galería */}
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-          {productosArray.slice(0, visibleCount).map(({ ref, images }) => (
+          {productosFiltrados.slice(0, visibleCount).map(({ ref, images }) => (
             <div
               key={ref}
               className="bg-white shadow-xl rounded-2xl overflow-hidden text-center min-h-[420px] flex flex-col cursor-pointer hover:scale-105 transition-transform duration-300"
@@ -75,7 +104,7 @@ export default function Productos() {
           ))}
         </div>
 
-        {visibleCount < productosArray.length && (
+        {visibleCount < productosFiltrados.length && (
           <div className="mt-10 text-center">
             <button
               onClick={mostrarMas}
@@ -100,7 +129,7 @@ export default function Productos() {
 
             <img
               src={selectedImages[currentIndex]}
-              alt={`Producto`}
+              alt="Producto"
               className="w-full max-h-[75vh] object-contain rounded"
             />
 
