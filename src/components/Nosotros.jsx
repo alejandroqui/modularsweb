@@ -5,6 +5,7 @@ import logo from '../us/Logo-Modular.png';
 function Nosotros() {
   return (
     <section id="nosotros" className="py-12 px-6" style={{ backgroundColor: '#fdf6ec' }}>
+    
       {/* Encabezado */}
       <div className="text-center mb-10">
         <h2 className="text-4xl font-bold text-[#2d5d25]">Nosotros</h2>

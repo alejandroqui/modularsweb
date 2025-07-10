@@ -17,10 +17,10 @@ export default function Productos() {
   Object.entries(rawImages).forEach(([path, img]) => {
     const match = path.match(/..\/imgs\/([^/]+)\/([^/]+)\/(\d+)\.jpg$/);
     if (match) {
-      const categoria = match[1];       // baño, cocina, etc.
-      const ref = match[2];             // lavamanos, espejo, etc.
+      const categoria = match[1];
+      const ref = match[2];
       const index = parseInt(match[3], 10);
-      const key = `${categoria}/${ref}`; // clave única
+      const key = `${categoria}/${ref}`;
 
       if (!productos[key]) productos[key] = { categoria, ref, images: [] };
       productos[key].images[index - 1] = img;
@@ -28,9 +28,7 @@ export default function Productos() {
   });
 
   const categorias = ['todos', ...new Set(Object.values(productos).map(p => p.categoria))];
-
   const productosArray = Object.values(productos);
-
   const productosFiltrados =
     categoriaSeleccionada === 'todos'
       ? productosArray
@@ -119,7 +117,7 @@ export default function Productos() {
       {/* Modal */}
       {modalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center px-4">
-          <div className="relative bg-white p-4 rounded-xl max-w-4xl w-full shadow-lg">
+          <div className="relative bg-white p-4 rounded-xl max-w-4xl w-full shadow-lg flex flex-col items-center">
             <button
               onClick={closeModal}
               className="absolute top-2 right-4 text-gray-600 hover:text-red-500 text-3xl"
@@ -127,25 +125,29 @@ export default function Productos() {
               ×
             </button>
 
-            <img
-              src={selectedImages[currentIndex]}
-              alt="Producto"
-              className="w-full max-h-[75vh] object-contain rounded"
-            />
+            <div className="w-full max-h-[80vh] mb-4">
+              <img
+                src={selectedImages[currentIndex]}
+                alt="Producto"
+                className="w-full max-h-[80vh] object-contain rounded-lg shadow-lg"
+              />
+            </div>
 
-            <div className="flex justify-between items-center mt-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-3 w-full">
               <button
                 onClick={prevImage}
-                className="bg-[#2d5d25] text-white px-5 py-2 rounded hover:bg-[#244b1f]"
+                className="bg-[#2d5d25] text-white px-5 py-2 rounded text-sm w-full sm:w-auto hover:bg-[#244b1f] transition"
               >
                 Anterior
               </button>
-              <span className="text-gray-700 text-lg font-medium">
+
+              <span className="text-gray-700 text-base font-medium text-center">
                 {currentIndex + 1} / {selectedImages.length}
               </span>
+
               <button
                 onClick={nextImage}
-                className="bg-[#2d5d25] text-white px-5 py-2 rounded hover:bg-[#244b1f]"
+                className="bg-[#2d5d25] text-white px-5 py-2 rounded text-sm w-full sm:w-auto hover:bg-[#244b1f] transition"
               >
                 Siguiente
               </button>
@@ -156,4 +158,3 @@ export default function Productos() {
     </section>
   );
 }
-
