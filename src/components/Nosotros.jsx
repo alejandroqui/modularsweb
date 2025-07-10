@@ -4,7 +4,7 @@ import logo from '../us/Logo-Modular.png';
 
 function Nosotros() {
   return (
-    <section id="nosotros" className="py-12 px-6" style={{ backgroundColor: '#fdf6ec' }}>
+    <section id="nosotros" className="py-12 px-6 scroll-mt-24" style={{ backgroundColor: '#fdf6ec' }}>
     
       {/* Encabezado */}
       <div className="text-center mb-10">

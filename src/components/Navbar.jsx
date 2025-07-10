@@ -14,7 +14,7 @@ function Navbar() {
           <div className="flex-shrink-0">
             <a href="#Navbar">
               <img
-                src="/Logo.png" // Asegúrate de que el logo esté en public/
+                src="/Logo.png"
                 alt="Logo"
                 className="h-16"
               />
@@ -51,12 +51,12 @@ function Navbar() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden mt-2 space-y-2 pb-4">
-            <a href="#Navbar" className={`${navLinkClass} block`}>Inicio</a>
-            <a href="#productos" className={`${navLinkClass} block`}>Productos</a>
-            <a href="#clientes" className={`${navLinkClass} block`}>Nuestros clientes</a>
-            <a href="#nosotros" className={`${navLinkClass} block`}>Nosotros</a>
-            <a href="#faq" className={`${navLinkClass} block`}>Preguntas frecuentes</a>
-            <a href="#contacto" className={`${navLinkClass} block`}>Contáctanos</a>
+            <a href="#Navbar" onClick={() => setIsOpen(false)} className={`${navLinkClass} block`}>Inicio</a>
+            <a href="#productos" onClick={() => setIsOpen(false)} className={`${navLinkClass} block`}>Productos</a>
+            <a href="#clientes" onClick={() => setIsOpen(false)} className={`${navLinkClass} block`}>Nuestros clientes</a>
+            <a href="#nosotros" onClick={() => setIsOpen(false)} className={`${navLinkClass} block`}>Nosotros</a>
+            <a href="#faq" onClick={() => setIsOpen(false)} className={`${navLinkClass} block`}>Preguntas frecuentes</a>
+            <a href="#contacto" onClick={() => setIsOpen(false)} className={`${navLinkClass} block`}>Contáctanos</a>
           </div>
         )}
       </div>

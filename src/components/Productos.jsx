@@ -56,7 +56,7 @@ export default function Productos() {
     );
 
   return (
-    <section id="productos" className="bg-[#fdf6ec] py-16 px-4 sm:px-8">
+    <section id="productos" className="bg-[#fdf6ec] py-16 px-4 sm:px-8 scroll-mt-24">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-[#2d5d25] mb-6 text-center">
           Nuestros Productos

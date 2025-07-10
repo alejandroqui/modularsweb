@@ -5,6 +5,7 @@ const FAQ = () => {
   return (
     <section
       id="faq"
+      className="scroll-mt-24 ..."
       style={{
         backgroundColor: '#2d5d25',
         color: '#fdf6ec',

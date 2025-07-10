@@ -1,6 +1,6 @@
 function Inicio() {
   return (
-    <section id="inicio" className="bg-gray-100">
+    <section id="inicio" className="bg-gray-100" >
       {/* Banner */}
       <div className="w-full">
         <img

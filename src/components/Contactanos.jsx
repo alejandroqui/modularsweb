@@ -2,7 +2,7 @@ import React from 'react';
 
 function Contactanos() {
   return (
-    <section id="contacto" className="py-12 px-6" style={{ backgroundColor: '#000' }}>
+    <section id="contacto" className="py-12 px-6 scroll-mt-24" style={{ backgroundColor: '#000' }}>
       {/* Encabezado */}
       <div className="text-center mb-10">
         <h2 className="text-4xl font-bold text-white">Contáctanos</h2>

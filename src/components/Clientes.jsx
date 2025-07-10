@@ -43,7 +43,7 @@ function Clientes() {
   };
 
   return (
-    <section id="clientes" className="bg-gray-100 py-12 px-6 relative">
+    <section id="clientes" className="bg-gray-100 py-12 px-6 relative scroll-mt-24">
       {/* Encabezado */}
       <div className="text-center mb-12">
         <h2 className="text-4xl font-bold text-[#2d5d25]">Nuestros Clientes</h2>
