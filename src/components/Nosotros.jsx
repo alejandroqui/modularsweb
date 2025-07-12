@@ -25,7 +25,7 @@ function Nosotros() {
           <div className="p-4 text-center">
             <h3 className="text-xl font-semibold text-[#2d5d25] mb-2">Nuestros CEO</h3>
             <p className="text-gray-700 text-sm">
-              Nuestros CEO han liderado las operaciones de <strong>Outlet Modular</strong> desde 2020, 
+              Nuestros CEO han liderado las operaciones de <strong>Modular´s</strong> desde 2020, 
               innovando y ofreciendo productos funcionales y estéticamente agradables.
               <br /><br />
               Gracias a su liderazgo, nuestra compañía se ha establecido como un referente en el mercado, 
