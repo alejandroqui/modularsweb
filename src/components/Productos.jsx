@@ -15,7 +15,7 @@ export default function Productos() {
   const productos = {};
 
   Object.entries(rawImages).forEach(([path, img]) => {
-    const match = path.match(/..\/imgs\/([^/]+)\/([^/]+)\/(\d+)\.jpg$/);
+      const match = path.match(/..\/imgs\/([^/]+)\/([^/]+)\/(\d+)\.(jpg|JPG)$/);
     if (match) {
       const categoria = match[1];
       const ref = match[2];
